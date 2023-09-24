@@ -275,7 +275,9 @@ display: none;
     grid-template-rows: min-content;
     row-gap: 25vh;
 
-  }
+  }.oneitem:hover  .button button  {
+    transform: translateY(400%);}
+    
   .oneitem {
     width: 80vw ;
   
@@ -288,3 +290,9 @@ display: none;
     transform: translateX(0) translateY(-10%);
   }
   }
+  @media screen and (max-width:500px) {
+   .banner {
+    height: 80vh;
+   }
+    }
+  

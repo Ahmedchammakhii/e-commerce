@@ -138,7 +138,7 @@ function setinterv () {
     
        
         };
-      },9000)}}
+      },9000)}} //9000
     //slider hne 
     var lowerSlider = document.querySelector('#lower');
 var  upperSlider = document.querySelector('#upper');
@@ -189,7 +189,42 @@ button.forEach(btn=>btn.addEventListener('mousemove', (e) => {
     
     btn.style.translate = `${offsetX}px ${offsetY}px`;
 }));
-setinterv()
+if (window.innerWidth<1700) {interval = setInterval(()=> {
+  shopContent.style.setProperty("--shopElements", shopContent.children.length );
+  shopContent3.style.setProperty("--shopElements", shopContent3.children.length );
+  shopContent2.style.setProperty("--shopElements", shopContent2.children.length );
+    for (let i = 0; i < todisplay; i++) {
+      shopContent.appendChild(shopContent.children[i].cloneNode(true));
+      shopContent2.appendChild(shopContent2.children[i].cloneNode(true));
+      shopContent3.appendChild(shopContent3.children[i].cloneNode(true));
+
+   
+    };
+  },10000)}
+  else if (window.innerWidth>1700) {interval = setInterval(()=> {
+    shopContent.style.setProperty("--shopElements", shopContent.children.length );
+    shopContent3.style.setProperty("--shopElements", shopContent3.children.length );
+    shopContent2.style.setProperty("--shopElements", shopContent2.children.length );
+      for (let i = 0; i < todisplay; i++) {
+        shopContent.appendChild(shopContent.children[i].cloneNode(true));
+        shopContent2.appendChild(shopContent2.children[i].cloneNode(true));
+        shopContent3.appendChild(shopContent3.children[i].cloneNode(true));
+  
+     
+      };
+    },8000)}
+    else if (window.innerWidth<600) {interval = setInterval(()=> {
+      shopContent.style.setProperty("--shopElements", shopContent.children.length );
+      shopContent3.style.setProperty("--shopElements", shopContent3.children.length );
+      shopContent2.style.setProperty("--shopElements", shopContent2.children.length );
+        for (let i = 0; i < todisplay-1; i++) {
+          shopContent.appendChild(shopContent.children[i].cloneNode(true));
+          shopContent2.appendChild(shopContent2.children[i].cloneNode(true));
+          shopContent3.appendChild(shopContent3.children[i].cloneNode(true));
+    
+       
+        };
+      },9000)}
 
  return ()=>{
 if (interval) clearInterval(interval)
@@ -483,6 +518,9 @@ clickedItems.map((item, i) => (
 </div>
 <style>{
 `
+body {
+  overflow: hidden;
+}
 .wish {
   width:100%;
   height:100%;
