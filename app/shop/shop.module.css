@@ -289,11 +289,16 @@ display: none;
   .listitems {
     transform: translateX(0) translateY(-10%);
   }
+  .row,.row1,.row2 {
+    --shopElements-displayed: 2;
+
+   }
   }
   @media screen and (max-width:500px) {
    .banner {
     height: 80vh;
    }
+ 
     }
   @media  screen and (max-height: 736px) {
     .listitems {
