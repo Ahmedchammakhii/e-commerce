@@ -101,7 +101,8 @@ gap: 2vh;
   z-index: 1000;
   transform: translateX(-5%);
   height: max-content;
- 
+  row-gap: 25vh;
+
 }
 .oneitem {
 width: calc(50vw / 2.4) ;
@@ -272,8 +273,8 @@ display: none;
     grid-template-columns: 1fr;
     justify-items: center;
     grid-template-rows: min-content;
-    row-gap: 20px;
-  
+    row-gap: 25vh;
+
   }
   .oneitem {
     width: 80vw ;
@@ -284,6 +285,6 @@ display: none;
   }
   
   .listitems {
-    transform: translateX(0) translateY(-20%);
+    transform: translateX(0) translateY(-10%);
   }
   }

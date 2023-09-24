@@ -61,6 +61,7 @@ var interval = null
 useEffect(()=>{
   window.scrollTo(0,0)
   //animation 
+  if(window.innerWidth>950) {
 gsap.fromTo("."+shop.circle,{x:0} ,{x:"-50%",duration:1,scrollTrigger:{
   trigger:"#listing",
   start:200,  scrub:true
@@ -88,7 +89,7 @@ gsap.fromTo("."+shop.row1,{"--playing":"running"},{"--playing":"paused",scrollTr
   scrub:true,
   start:700,
 }})
-
+}
 function pauseInterval() {
   clearInterval(interval);
 }
