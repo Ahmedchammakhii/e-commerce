@@ -2,8 +2,10 @@
 import { useRef, useState,useEffect, useLayoutEffect } from "react"
 import shop from "./shop.module.css"
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
-export default function Shop () {
+export default function Shop () {gsap.registerPlugin(ScrollTrigger)
+
 const [showmore,setshow]=useState(false)
 const row = useRef(null);
 const row1 = useRef(null);
@@ -36,6 +38,7 @@ const [thirdRow] = useState( {
  3: { link: "/assets/row3/row3 (4).jpg" },
   4:{ link: "/assets/row3/row3 (5).jpg"},
 });
+
 const [color, setColor] = useState([  { item: "black"  , clicked: false },
 { item: "brown"  , clicked: false },
 
@@ -53,10 +56,43 @@ const [color, setColor] = useState([  { item: "black"  , clicked: false },
 ,
   clicked: false },
 ]);
-
+var interval = null
 
 useEffect(()=>{
   window.scrollTo(0,0)
+  //animation 
+gsap.fromTo("."+shop.circle,{x:0} ,{x:"-50%",duration:1,scrollTrigger:{
+  trigger:"#listing",
+  start:200,  scrub:true
+
+}})
+gsap.fromTo("."+shop.elipse,{x:0} , {x:"-120%",duration:1,scrollTrigger:{
+  trigger:"#listing",
+  start:200,
+  scrub:true
+}})
+gsap.fromTo("."+shop.row2,{"--playing":"running"},{"--playing":"paused",scrollTrigger:{
+  trigger:"#listing",
+  scrub:true,
+  start:700,
+  onEnter: pauseInterval,
+  onLeaveBack: setinterv,
+}})
+gsap.fromTo("."+shop.row,{"--playing":"running"},{"--playing":"paused",scrollTrigger:{
+  trigger:"#listing",
+  scrub:true,
+  start:700,
+}})
+gsap.fromTo("."+shop.row1,{"--playing":"running"},{"--playing":"paused",scrollTrigger:{
+  trigger:"#listing",
+  scrub:true,
+  start:700,
+}})
+
+function pauseInterval() {
+  clearInterval(interval);
+}
+  //end
   const todisplay = 3;
   const shopContent = row.current;
   shopContent.style.setProperty("--shopElements", shopContent.children.length );
@@ -65,8 +101,8 @@ useEffect(()=>{
   shopContent3.style.setProperty("--shopElements", shopContent3.children.length );
 
   shopContent2.style.setProperty("--shopElements", shopContent2.children.length );
-
- if (window.innerWidth<1700) {var interval = setInterval(()=> {
+function setinterv () {
+ if (window.innerWidth<1700) {interval = setInterval(()=> {
   shopContent.style.setProperty("--shopElements", shopContent.children.length );
   shopContent3.style.setProperty("--shopElements", shopContent3.children.length );
   shopContent2.style.setProperty("--shopElements", shopContent2.children.length );
@@ -77,8 +113,8 @@ useEffect(()=>{
 
    
     };
-  },11000)}
-  else if (window.innerWidth>1700) {var interval = setInterval(()=> {
+  },10000)}
+  else if (window.innerWidth>1700) {interval = setInterval(()=> {
     shopContent.style.setProperty("--shopElements", shopContent.children.length );
     shopContent3.style.setProperty("--shopElements", shopContent3.children.length );
     shopContent2.style.setProperty("--shopElements", shopContent2.children.length );
@@ -89,8 +125,8 @@ useEffect(()=>{
   
      
       };
-    },9000)}
-    else if (window.innerWidth<600) {var interval = setInterval(()=> {
+    },8000)}
+    else if (window.innerWidth<600) {interval = setInterval(()=> {
       shopContent.style.setProperty("--shopElements", shopContent.children.length );
       shopContent3.style.setProperty("--shopElements", shopContent3.children.length );
       shopContent2.style.setProperty("--shopElements", shopContent2.children.length );
@@ -101,7 +137,7 @@ useEffect(()=>{
     
        
         };
-      },20000)}
+      },18000)}}
     //slider hne 
     var lowerSlider = document.querySelector('#lower');
 var  upperSlider = document.querySelector('#upper');
@@ -152,7 +188,7 @@ button.forEach(btn=>btn.addEventListener('mousemove', (e) => {
     
     btn.style.translate = `${offsetX}px ${offsetY}px`;
 }));
-
+setinterv()
 
  return ()=>{
 if (interval) clearInterval(interval)
@@ -309,9 +345,16 @@ key={color.item}
 </div>
 <div className={shop.listitems} id="listing">
 <div className={shop.oneitem} >
+  <div className="heart">
+    <img src="/assets/wish.png" alt="wishlist" className="wish" />
+  </div>
+  <div className={shop.img}>
+  <img src="/assets/1.png" alt=""  />
+
+  </div>
   <div className={shop.iteminfo}>
     <h1>Adroisaa</h1>
-    <p>1000</p>
+    <p>1000DT</p>
   </div>
   <div className={shop.button}>
     <button className="addtocard">Add to card</button>
@@ -319,18 +362,30 @@ key={color.item}
   
 </div>
 <div className={shop.oneitem} >
+<div className={shop.img}>
+<img src="/assets/1.jpg" alt=""  />
+
+  </div>
+
+
   <div className={shop.iteminfo}>
     <h1>Adroisaa</h1>
-    <p>1000</p>
+    <p>1000DT</p>
   </div>
   <div className={shop.button}>
     <button className="addtocard">Add to card</button>
   </div>
   
 </div><div className={shop.oneitem} >
+<div className={shop.img}>
+<img src="/assets/1 (1).png" alt=""  />
+
+  </div>
+
+
   <div className={shop.iteminfo}>
     <h1>Adroisaa</h1>
-    <p>1000</p>
+    <p>1000DT</p>
   </div>
   <div className={shop.button}>
     <button className="addtocard">Add to card</button>
@@ -341,6 +396,22 @@ key={color.item}
 </div>
 <style>{
 `
+.wish {
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  z-index:5000;
+  cursor:pointer
+}
+.heart {
+  width:8%;
+  height:8%;
+  position:absolute ;
+  top:5%;
+  right:11%;
+  z-index:5000;
+
+}
 svg {
   width: .8rem;
   height: .8rem;
@@ -427,7 +498,7 @@ svg {
     height: 20px;
     width: 20px;
     margin-top: -10px;
-    background:#e73c37;
+    background-color: #f26c4f;
     cursor: pointer;
     cursor: pointer;
     pointer-events: all;
@@ -445,7 +516,7 @@ svg {
   height: 10px;
   width: 10px;
   margin-top: -5px;
-  background:#e73c37;
+  background-color: #f26c4f;
   cursor: pointer;
   cursor: pointer;
   pointer-events: all;
@@ -463,8 +534,7 @@ svg {
   height: 10px;
   width: 10px;
   margin-top: -5px;
-  background:#e73c37;
-  cursor: pointer;
+  background-color: #f26c4f;
   cursor: pointer;
   pointer-events: all;
   z-index: 100;

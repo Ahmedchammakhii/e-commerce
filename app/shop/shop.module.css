@@ -23,6 +23,8 @@
 gap: 100px;
 transition: all 1s linear;
 animation: scrolling var(--duration) linear infinite;
+--playing : running;
+animation-play-state:var(--playing);
 }
 .row1 {
   animation: scrolling1 var(--duration) linear infinite !important;
@@ -95,22 +97,24 @@ gap: 2vh;
   display: grid;
   grid-template-columns: repeat(3,1fr);
   grid-template-rows:  auto ;
-  column-gap: 25px;
+  column-gap: 10px;
   z-index: 1000;
   transform: translateX(-5%);
  
 }
 .oneitem {
-width: calc(50vw / 2.2) ;
-height: auto;
-max-height: 500px;
+width: calc(50vw / 2.4) ;
+height: 450px;
+max-height: 550px;
 background-color: #101010;
-border-radius: 5rem;
+border-radius: 4rem;
 position: relative;
 display: flex;
-justify-content: center;
 align-items: center;
 flex-direction: column;
+justify-content: center;
+
+
 }
 
 .iteminfo {
@@ -121,16 +125,17 @@ flex-direction: column;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 10px;
 }
 .iteminfo p{
 color: gray;
-position: relative; }
-.iteminfo p::after{
-  color: gray;
-content: " DT"; 
-position: absolute;
-margin-left: 2px;}
+position: relative;
+ }
+.iteminfo h1:hover{
+  color: #f26c4f;
+cursor: pointer; }
+
 .button button {
   background-color: #f26c4f;
   border: 0;
@@ -179,6 +184,7 @@ transition: all .8s linear;
 justify-content: center;
 height: 100%;
 overflow: hidden;
+position: absolute;
   
 }
 .oneitem:hover  .button button  {
@@ -191,3 +197,16 @@ transform: translateX(200%);
   transform: translateX(200%);
   transition-delay: .15s;
   }
+  .img {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
+  .img img {
+    width: 80%;
+    height: 90%;
+object-fit: contain;
+}
+  
