@@ -270,6 +270,7 @@ display: none;
 }
 @media screen and (max-width:600px) {
   .listitems {
+    margin-top: 120px;
     grid-template-columns: 1fr;
     justify-items: center;
     grid-template-rows: min-content;
