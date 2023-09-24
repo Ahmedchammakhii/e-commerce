@@ -224,7 +224,7 @@ if (window.innerWidth<1700) {interval = setInterval(()=> {
     
        
         };
-      },9000)}
+      },21000)}
 
  return ()=>{
 if (interval) clearInterval(interval)
