@@ -294,4 +294,9 @@ display: none;
     height: 80vh;
    }
     }
+  @media  screen and (max-height: 736px) {
+    .listitems {
+      transform: translateX(0) translateY(5%);
+    }
   
+  }
