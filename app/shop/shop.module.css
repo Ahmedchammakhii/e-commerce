@@ -270,6 +270,8 @@ display: none;
   .listitems {
     grid-template-columns: 1fr;
     justify-items: center;
+    grid-template-rows: min-content;
+    row-gap: 20px;
   
   }
   .oneitem {
