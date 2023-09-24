@@ -239,7 +239,6 @@ position: relative;
 display: none;
 }
 
-
 .menuitems h2 {
   z-index: 50000;
   
@@ -258,6 +257,7 @@ display: none;
   grid-template-columns: 1fr;
   grid-template-rows: min-content;
   gap: 0px;
+  padding-left: 0%;
 
 }
 .listitems {
