@@ -107,7 +107,7 @@ function setinterv () {
   shopContent.style.setProperty("--shopElements", shopContent.children.length );
   shopContent3.style.setProperty("--shopElements", shopContent3.children.length );
   shopContent2.style.setProperty("--shopElements", shopContent2.children.length );
-    for (let i = 0; i < todisplay+1; i++) {
+    for (let i = 0; i < todisplay; i++) {
       shopContent.appendChild(shopContent.children[i].cloneNode(true));
       shopContent2.appendChild(shopContent2.children[i].cloneNode(true));
       shopContent3.appendChild(shopContent3.children[i].cloneNode(true));
@@ -119,7 +119,7 @@ function setinterv () {
     shopContent.style.setProperty("--shopElements", shopContent.children.length );
     shopContent3.style.setProperty("--shopElements", shopContent3.children.length );
     shopContent2.style.setProperty("--shopElements", shopContent2.children.length );
-      for (let i = 0; i < todisplay+1; i++) {
+      for (let i = 0; i < todisplay; i++) {
         shopContent.appendChild(shopContent.children[i].cloneNode(true));
         shopContent2.appendChild(shopContent2.children[i].cloneNode(true));
         shopContent3.appendChild(shopContent3.children[i].cloneNode(true));
@@ -131,14 +131,14 @@ function setinterv () {
       shopContent.style.setProperty("--shopElements", shopContent.children.length );
       shopContent3.style.setProperty("--shopElements", shopContent3.children.length );
       shopContent2.style.setProperty("--shopElements", shopContent2.children.length );
-        for (let i = 0; i < todisplay+1; i++) {
+        for (let i = 0; i < todisplay-1; i++) {
           shopContent.appendChild(shopContent.children[i].cloneNode(true));
           shopContent2.appendChild(shopContent2.children[i].cloneNode(true));
           shopContent3.appendChild(shopContent3.children[i].cloneNode(true));
     
        
         };
-      },18000)}}
+      },9000)}}
     //slider hne 
     var lowerSlider = document.querySelector('#lower');
 var  upperSlider = document.querySelector('#upper');
