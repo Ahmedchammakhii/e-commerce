@@ -190,7 +190,7 @@ position: absolute;
   
 }
 .oneitem:hover  .button button  {
-transform: translateY(350%);}
+transform: translateY(300%);}
 
 .button button:hover::before {
 transform: translateX(200%);
@@ -275,8 +275,7 @@ display: none;
     grid-template-rows: min-content;
     row-gap: 25vh;
 
-  }.oneitem:hover  .button button  {
-    transform: translateY(400%);}
+  }
     
   .oneitem {
     width: 80vw ;
