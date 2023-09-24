@@ -38,7 +38,7 @@ const [thirdRow] = useState( {
  3: { link: "/assets/row3/row3 (4).jpg" },
   4:{ link: "/assets/row3/row3 (5).jpg"},
 });
-
+const [sliderPosition,setslider] = useState(1)
 const [color, setColor] = useState([  { item: "black"  , clicked: false },
 { item: "brown"  , clicked: false },
 
@@ -343,6 +343,92 @@ key={color.item}
 </div>
 <h4 onClick={e=>setshow(c=>!c)} style={{cursor:"pointer"}}>Show More</h4>
 </div>
+<div className={shop.menuMobile}>
+  <h4 onClick=
+  {e=>{setslider(1);document.querySelector(".slidermenu").style.left="0%"}}
+   style={sliderPosition==1 ? {color:"grey",zIndex:100,cursor:"pointer"} : {color:"#fff",cursor:"pointer"}}>Categorie</h4>
+  <h4 onClick={e=>{setslider(2);document.querySelector(".slidermenu").style.left="36%"}}  style={sliderPosition==2 ? {color:"grey",zIndex:100,cursor:"pointer"} : {color:"#fff",cursor:"pointer"}}>Price</h4>
+  <h4 onClick={e=>{setslider(3);document.querySelector(".slidermenu").style.left="70%"}} style={sliderPosition==3 ? {color:"grey",zIndex:100,cursor:"pointer"} : {color:"#fff",cursor:"pointer"}}>Color</h4>
+  <div className="slidermenu" style={{transition:"all linear .5s",position:"absolute",width:"calc(90% / 3)",height:"90%",background:"#fff",borderRadius:"4rem",left:0,zIndex:1}}></div>
+
+</div>
+<div className={shop.menuitems} style={{color:"#fff",width:"80vw",margin:"0px auto",display:"none",justifyItems:"center",gridTemplateColumns:"repeat(3,1fr)",gridTemplateRows:"auto",height:"max-content",rowGap:20}}>
+{ sliderPosition==3 ? color.map((color,i)=> 
+<div className="check" style={{display:"flex",width:"15vw",justifyContent:"space-between",alignItems:"center"}}>
+  <h2
+  key={color.item}
+    style={
+      !color.clicked
+        ? { fontWeight: 400, cursor: "pointer" }
+        : { fontWeight: 400, cursor: "pointer", color: "orange" }
+    }
+    onClick={e =>
+      setColor((prevState) => {
+        const updatedItems = [...prevState]; 
+        updatedItems.forEach((item,j)=> j!==i ? item.clicked=false : null)
+        updatedItems[i] = {
+          ...updatedItems[i],
+          clicked: !updatedItems[i].clicked,
+        };
+        
+        return updatedItems; 
+      })
+    }
+  >
+    {color.item}
+  </h2>
+ {color.clicked && <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.605 15.082"><path id="Path_406" data-name="Path 406" d="M-20499.1,665.107l5.592,5.535,10.357-10.254" transform="translate(20501.93 -657.56)" fill="none" stroke="#ff6c4d" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path></svg>}
+</div> 
+
+)
+: sliderPosition==2 ? (<fieldset className="filter-price">
+   
+<div className="price-field">
+  <input type="range"  min="100" max="500" defaultValue={100}  id="lower"/>
+  <input type="range" min="100" max="500" defaultValue={500} id="upper"/>
+</div>
+ <div className="price-wrap">
+  <div className="price-wrap-1">
+    <input id="one"/>
+    <label htmlFor="one">DT</label>
+  </div>
+  <div className="price-wrap_line">-</div>
+  <div className="price-wrap-2">
+    <input id="two"/>
+    <label htmlFor="two">DT</label>
+  </div>
+</div>
+</fieldset> 
+) :
+clickedItems.map((item, i) => (
+  <div className="check" style={{display:"flex",width:"15vw",justifyContent:"space-between",alignItems:"center"}}>
+  <h2
+  key={item.item}
+    style={
+      !item.clicked
+        ? { fontWeight: 400, cursor: "pointer" }
+        : { fontWeight: 400, cursor: "pointer", color: "orange" }
+    }
+    onClick={e =>
+      setClicked((prevState) => {
+        const updatedItems = [...prevState]; 
+        updatedItems.forEach((item,j)=> j!==i ? item.clicked=false : null)
+        updatedItems[i] = {
+          ...updatedItems[i],
+          clicked: !updatedItems[i].clicked,
+        };
+        
+        return updatedItems; 
+      })
+    }
+  >
+    {item.item}
+  </h2>
+ {item.clicked && <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.605 15.082"><path id="Path_406" data-name="Path 406" d="M-20499.1,665.107l5.592,5.535,10.357-10.254" transform="translate(20501.93 -657.56)" fill="none" stroke="#ff6c4d" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path></svg>}
+</div>))
+
+} 
+</div>
 <div className={shop.listitems} id="listing">
 <div className={shop.oneitem} >
   <div className="heart">
@@ -622,8 +708,15 @@ justify-content:space-between;
 .price-field input[type=range]:active::-webkit-slider-thumb {
   box-shadow: 0 0 0 0.5px #fff;
   transition-duration: 0.3s;
-}`
+}
+@media screen and (max-width:1030px) {
+.check {
+  width: max-content !important;
+  gap:10px !important;
+}
+`
 }</style>
+
  </section>
 );
 }
